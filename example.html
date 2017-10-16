@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CanvasInput Example</title>
+</head>
+<body>
+	<canvas id="text" width="200" height="50"></canvas>
+	<br>
+	<canvas id="password" width="200" height="50"></canvas>
+
+	<script type="text/javascript" src="CanvasInput.js"></script>
+	<script type="text/javascript">
+		var input = new CanvasInput({
+		  canvas: document.getElementById('text'),
+		  fontSize: 18,
+		  fontFamily: 'Arial',
+		  fontColor: '#212121',
+		  fontWeight: 'bold',
+		  width: 300,
+		  padding: 8,
+		  borderWidth: 1,
+		  borderColor: '#000',
+		  borderRadius: 3,
+		  boxShadow: '1px 1px 0px #fff',
+		  innerShadow: '0px 0px 5px rgba(0, 0, 0, 0.5)',
+		  placeHolder: 'Enter message here...'
+		});
+
+		var inputPassword = new CanvasInput({
+		  canvas: document.getElementById('password'),
+		  fontSize: 18,
+		  fontFamily: 'Arial',
+		  fontColor: '#212121',
+		  fontWeight: 'bold',
+		  width: 300,
+		  padding: 8,
+		  borderWidth: 1,
+		  borderColor: '#000',
+		  borderRadius: 3,
+		  boxShadow: '1px 1px 0px #fff',
+		  innerShadow: '0px 0px 5px rgba(0, 0, 0, 0.5)',
+		  placeHolder: 'Enter password here...',
+		  password: true
+		});
+	</script>
+</body>
+</html>

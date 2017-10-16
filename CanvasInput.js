@@ -1,5 +1,5 @@
 /*!
- *  CanvasInput v1.2.6
+ *  CanvasInput v1.2.7
  *  http://goldfirestudios.com/blog/108/CanvasInput-HTML5-Canvas-Text-Input
  *
  *  (c) 2013-2017, James Simpson of GoldFire Studios
@@ -60,6 +60,8 @@
     self._hasFocus = false;
     self._selection = [0, 0];
     self._wasOver = false;
+    self._password = o.password || false;
+    self._passwordCharacter = o.passwordCharacter || '*';
 
     // parse box shadow
     self.boxShadow(self._boxShadow, true);
@@ -1105,6 +1107,13 @@
           ctx.fillRect(paddingBorder + selectOffset, paddingBorder, selectWidth, self._height);
         }
 
+        // display the placeholder if they didn't type anything, * if the input is a password or just the text
+        if (text === '' && self._placeHolder) {  
+          text = self._placeHolder;
+        } else if (self._password && self._placeHolder != text) {
+            text = text.replace(new RegExp('.', 'g'), self._passwordCharacter);
+        }
+
         // draw the cursor
         if (self._cursor) {
           var cursorOffset = self._textWidth(text.substring(0, self._cursorPos));
@@ -1115,9 +1124,6 @@
         // draw the text
         var textX = self._padding + self._borderWidth + self.shadowL,
           textY = Math.round(paddingBorder + self._height / 2);
-
-        // only remove the placeholder text if they have typed something
-        text = (text === '' && self._placeHolder) ? self._placeHolder : text;
 
         ctx.fillStyle = (self._value !== '' && self._value !== self._placeHolder) ? self._fontColor : self._placeHolderColor;
         ctx.font = self._fontStyle + ' ' + self._fontWeight + ' ' + self._fontSize + 'px ' + self._fontFamily;

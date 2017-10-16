@@ -95,6 +95,8 @@ var input = new CanvasInput({
 * **selectionColor**: `String` *(`rgba(179, 212, 253, 0.8)` by default)* The default color for the text selection highlight.
 * **placeHolder**: `String` *(`''` by default)* The default place holder text. This text will disappear when the user focusses on the input.
 * **value**: `String` *(`''` by default)* Set the default value for an input.
+* **password**: `Boolean` *(`false` by default)* Set to `true` to simulate a password field.
+* **passwordCharacter**: `String` *(`*` by default)* The character to show instead of the real letter.
 * **onsubmit**: `Function` *(`function() {}` by default)* Callback fires when user hits the enter key.
 * **onkeydown**: `Function` *(`function() {}` by default)* Callback fires on key down.
 * **onkeyup**: `Function` *(`function() {}` by default)* Callback fires on key up.
