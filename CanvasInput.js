@@ -159,7 +159,6 @@
       if (self._hasFocus) {
         self._onkeyup(e, self);
       }
-      if(e.defaultPrevented)return;
       // update the canvas input state information from the hidden input
       self._value = self._hiddenInput.value;
       self._cursorPos = self._hiddenInput.selectionStart;
@@ -875,6 +874,7 @@
       // fire custom user event
       self._onkeydown(e, self);
 
+      if(e.defaultPrevented)return;
       // add support for Ctrl/Cmd+A selection
       if (keyCode === 65 && (e.ctrlKey || e.metaKey)) {
         self.selectText();
