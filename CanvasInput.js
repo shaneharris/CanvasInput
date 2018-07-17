@@ -156,6 +156,10 @@
     self._hiddenInput.addEventListener('keyup', function(e) {
       e = e || window.event;
 
+      if (self._hasFocus) {
+        self._onkeyup(e, self);
+      }
+      if(e.defaultPrevented)return;
       // update the canvas input state information from the hidden input
       self._value = self._hiddenInput.value;
       self._cursorPos = self._hiddenInput.selectionStart;
@@ -163,9 +167,6 @@
       self._selection = [self._hiddenInput.selectionStart, self._hiddenInput.selectionEnd];
       self.render();
 
-      if (self._hasFocus) {
-        self._onkeyup(e, self);
-      }
     });
 
     // add this to the buffer
